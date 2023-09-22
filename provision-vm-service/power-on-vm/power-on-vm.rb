@@ -3,7 +3,7 @@
 require "json"
 require "rbvmomi"
 
-secrets = JSON.load(File.read(ENV.fetch("SECRETS")))
+secrets = JSON.load(File.read(ENV.fetch("_CREDENTIALS")))
 
 vcenter_host     = ENV.fetch("VCENTER_HOST")
 vcenter_user     = secrets["vcenter_user"]
