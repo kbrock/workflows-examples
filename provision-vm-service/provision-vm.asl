@@ -13,6 +13,7 @@
         "vcenter_password.$": "$.vcenter_password"
       },
       "Parameters": {
+        "API_URL.$": "$$.Execution._manageiq_api_url",
         "PROVIDER_ID.$": "$.dialog_provider",
         "VERIFY_SSL": false,
         "TEMPLATE.$": "$.dialog_source_template",
