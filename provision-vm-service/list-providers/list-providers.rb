@@ -2,7 +2,7 @@
 
 require "manageiq-api-client"
 
-secrets = JSON.load(File.read(ENV.fetch("SECRETS")))
+secrets = JSON.load(File.read(ENV.fetch("_CREDENTIALS")))
 
 user     = secrets.fetch("api_user", "admin")
 password = secrets.fetch("api_password", "smartvm")
