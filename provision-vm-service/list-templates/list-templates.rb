@@ -12,9 +12,9 @@ ems_id     = ENV.fetch("PROVIDER_ID")
 verify_ssl = ENV.fetch("VERIFY_SSL", "true") == "true"
 
 api = ManageIQ::API::Client.new(
-  :url      => url,
-  :user     => user,
-  :password => password,
+  :url      => api_url,
+  :user     => api_user,
+  :password => api_password,
   :ssl      => {:verify => verify_ssl}
 )
 
