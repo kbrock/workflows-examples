@@ -15,7 +15,7 @@
       "Parameters": {
         "API_URL.$": "$$.Execution._manageiq_api_url",
         "PROVIDER_ID.$": "$.dialog_provider",
-        "VERIFY_SSL": false,
+        "VERIFY_SSL.$": "$.dialog_verify_ssl",
         "TEMPLATE.$": "$.dialog_source_template",
         "NAME.$": "$.dialog_vm_name"
       }
@@ -31,6 +31,7 @@
       },
       "Parameters": {
         "VCENTER_HOST.$": "$.vcenter_host",
+        "VERIFY_SSL.$": "$.dialog_verify_ssl",
         "TASK.$": "$.task"
       }
     },
@@ -73,6 +74,7 @@
       },
       "Parameters": {
         "VCENTER_HOST.$": "$.vcenter_host",
+        "VERIFY_SSL.$": "$.dialog_verify_ssl",
         "VM.$": "$.vm"
       }
     },

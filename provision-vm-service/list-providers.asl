@@ -13,7 +13,7 @@
       "Parameters": {
         "API_URL.$": "$$.Execution._manageiq_api_url",
         "PROVIDER_TYPE.$": "ManageIQ::Providers::Vmware::InfraManager",
-        "VERIFY_SSL": false
+        "VERIFY_SSL.$": "$.dialog.dialog_verify_ssl"
       }
     }
   }

@@ -13,7 +13,7 @@
       "Parameters": {
         "API_URL.$": "$$.Execution._manageiq_api_url",
         "PROVIDER_ID.$": "$.dialog.dialog_provider",
-        "VERIFY_SSL": false
+        "VERIFY_SSL.$": "$.dialog.dialog_verify_ssl"
       }
     }
   }
