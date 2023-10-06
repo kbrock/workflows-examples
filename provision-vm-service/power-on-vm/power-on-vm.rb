@@ -9,12 +9,12 @@ vcenter_host     = ENV.fetch("VCENTER_HOST")
 vcenter_user     = secrets["vcenter_user"]
 vcenter_password = secrets["vcenter_password"]
 
-vm_ref = ENV.fetch("vm")
+vm_ref = ENV.fetch("VM")
 
 vim = RbVmomi::VIM.connect(
-  host: vcenter,
-  user: user,
-  password: password,
+  host: vcenter_host,
+  user: vcenter_user,
+  password: vcenter_password,
   insecure: true
 )
 
