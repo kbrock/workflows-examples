@@ -20,9 +20,9 @@ vim = RbVmomi::VIM.connect(
 
 vm = RbVmomi::VIM::VirtualMachine(vim, vm_ref)
 task = vm.PowerOnVM_Task
-
-result = {"task_id": task._ref}.to_json
+result = {"task_id": task._ref}
 
 vim.close
 
-puts result
+# Output the result in JSON format to STDOUT
+puts result.to_json

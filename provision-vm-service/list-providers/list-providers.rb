@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require "json"
 require "manageiq-api-client"
 
 secrets = JSON.load(File.read(ENV.fetch("_CREDENTIALS")))
@@ -22,4 +23,5 @@ response = api.providers
 response = response.where(:type => provider_type) if provider_type
 response = response.pluck(:id, :name)
 
+# Output the list of providers in JSON format to STDOUT
 puts({"values" => response.to_h}.to_json)

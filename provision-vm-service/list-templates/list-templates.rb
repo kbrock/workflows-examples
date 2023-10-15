@@ -18,6 +18,8 @@ api = ManageIQ::API::Client.new(
   :ssl      => {:verify => verify_ssl}
 )
 
+# Get the list of templates
 resources = api.templates.where(:ems_id => ems_id).pluck(:ems_ref, :name)
 
+# Output the list of templates in JSON format to STDOUT
 puts({"values" => resources.to_h}.to_json)

@@ -12,8 +12,9 @@
       },
       "Parameters": {
         "API_URL.$": "$$.Execution._manageiq_api_url",
-        "PROVIDER_ID.$": "$.dialog.dialog_provider",
-        "VERIFY_SSL.$": "$.dialog.dialog_verify_ssl"
+        "VERIFY_SSL.$": "$.dialog.dialog_verify_ssl",
+
+        "PROVIDER_ID.$": "$.dialog.dialog_provider"
       }
     }
   }

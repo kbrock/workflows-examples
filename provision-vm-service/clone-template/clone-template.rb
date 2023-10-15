@@ -46,8 +46,9 @@ spec = RbVmomi::VIM::VirtualMachineCloneSpec(
 )
 
 task = template.CloneVM_Task(folder: folder_ref, name: vm_name, spec: spec)
-result = {"task": task._ref, "vcenter_host": vcenter_host}.to_json
+result = {"task": task._ref, "vcenter_host": vcenter_host}
 
 vim.close
 
-puts result
+# Output the result in JSON format to STDOUT
+puts result.to_json
