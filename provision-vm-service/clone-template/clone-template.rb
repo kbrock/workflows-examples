@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'bundler/setup'
 require "pathname"
 require "json"
 require "rbvmomi"
