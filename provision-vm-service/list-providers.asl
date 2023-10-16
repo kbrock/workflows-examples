@@ -1,5 +1,5 @@
 {
-  "Comment": "List providers.",
+  "Comment": "List Providers.",
   "StartAt": "ListProviders",
   "States": {
     "ListProviders": {
@@ -12,8 +12,9 @@
       },
       "Parameters": {
         "API_URL.$": "$$.Execution._manageiq_api_url",
-        "PROVIDER_TYPE.$": "ManageIQ::Providers::Vmware::InfraManager",
-        "VERIFY_SSL.$": "$.dialog.dialog_verify_ssl"
+        "VERIFY_SSL.$": "$.dialog.dialog_verify_ssl",
+
+        "PROVIDER_TYPE": "ManageIQ::Providers::Vmware::InfraManager"
       }
     }
   }

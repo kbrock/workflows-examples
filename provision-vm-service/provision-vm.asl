@@ -14,10 +14,11 @@
       },
       "Parameters": {
         "API_URL.$": "$$.Execution._manageiq_api_url",
-        "PROVIDER_ID.$": "$.dialog_provider",
-        "VERIFY_SSL.$": "$.dialog_verify_ssl",
-        "TEMPLATE.$": "$.dialog_source_template",
-        "NAME.$": "$.dialog_vm_name"
+        "VERIFY_SSL.$": "$.dialog.dialog_verify_ssl",
+
+        "PROVIDER_ID.$": "$.dialog.dialog_provider",
+        "TEMPLATE.$": "$.dialog.dialog_source_template",
+        "NAME.$": "$.dialog.dialog_vm_name"
       }
     },
 
@@ -31,7 +32,6 @@
       },
       "Parameters": {
         "VCENTER_HOST.$": "$.vcenter_host",
-        "VERIFY_SSL.$": "$.dialog_verify_ssl",
         "TASK.$": "$.task"
       }
     },
@@ -58,12 +58,6 @@
       "Default": "FailState"
     },
 
-    "RetryState": {
-      "Type": "Wait",
-      "Seconds": 5,
-      "Next": "CheckTaskComplete"
-    },
-
     "PowerOnVM": {
       "Type": "Task",
       "Resource": "docker://docker.io/agrare/power-on-vm:latest",
@@ -74,9 +68,14 @@
       },
       "Parameters": {
         "VCENTER_HOST.$": "$.vcenter_host",
-        "VERIFY_SSL.$": "$.dialog_verify_ssl",
         "VM.$": "$.vm"
       }
+    },
+
+    "RetryState": {
+      "Type": "Wait",
+      "Seconds": 5,
+      "Next": "CheckTaskComplete"
     },
 
     "FailState": {

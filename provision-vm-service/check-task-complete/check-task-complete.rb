@@ -27,4 +27,5 @@ result = {
 
 vim.close
 
+# Output the result in JSON format to STDOUT
 puts result.to_json
