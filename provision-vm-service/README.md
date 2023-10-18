@@ -43,11 +43,11 @@ For example, using the `list-providers` image:
 
 1. Pre-requisites
 
-  - The ManageIQ server is running at `https://localhost:3000`.
+  - The ManageIQ server is running at `http://localhost:3000`.
   - A VMware provider has been added to ManageIQ.
   - You have authentication credentials in the `../sample_credentials.json` file. The credentials can be an api_user/api_password pair or api_token or api_bearer_token.
 
-2. Build the container.
+2. Optionally build the container if you are verifying any local changes.
 
    ```sh
    cd list-providers
@@ -57,10 +57,12 @@ For example, using the `list-providers` image:
 3. Run the container.
 
    ```sh
+   cd list-providers
    docker run --rm -it \
-     -v /run/secrets/_CREDENTIALS:$(realpath $PWD/../sample_credentials.json):z \
-     -e _CREDENTIALS=/run/secrets/_CREDENTIALS
-     -e API_URL=https://localhost:3000 \
+     --net host \
+     -v $(realpath $PWD/../sample_credentials.json):/run/secrets/_CREDENTIALS:z \
+     -e _CREDENTIALS=/run/secrets/_CREDENTIALS \
+     -e API_URL=http://localhost:3000 \
      -e VERIFY_SSL=false \
      -e PROVIDER_TYPE=ManageIQ::Providers::Vmware::InfraManager \
      list-providers:latest
