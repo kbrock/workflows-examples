@@ -4,7 +4,7 @@
   "States": {
     "CloneTemplate": {
       "Type": "Task",
-      "Resource": "docker://docker.io/agrare/clone-template:latest",
+      "Resource": "docker://docker.io/manageiq/workflows-examples-provision-vm-service-clone-template:latest",
       "Next": "CheckTaskComplete",
       "Credentials": {
         "api_user.$": "$.api_user",
@@ -26,7 +26,7 @@
 
     "CheckTaskComplete": {
       "Type": "Task",
-      "Resource": "docker://docker.io/agrare/check-task-complete:latest",
+      "Resource": "docker://docker.io/manageiq/workflows-examples-provision-vm-service-check-task-complete:latest",
       "Next": "PollTaskComplete",
       "Credentials": {
         "vcenter_user.$": "$.vcenter_user",
@@ -62,7 +62,7 @@
 
     "PowerOnVM": {
       "Type": "Task",
-      "Resource": "docker://docker.io/agrare/power-on-vm:latest",
+      "Resource": "docker://docker.io/manageiq/workflows-examples-provision-vm-service-power-on-vm:latest",
       "Next": "SuccessState",
       "Credentials": {
         "vcenter_user.$": "$.vcenter_user",

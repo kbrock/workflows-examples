@@ -1,0 +1,19 @@
+#!/bin/bash
+
+IMAGE=$1
+if [ -z "$IMAGE" ]; then
+  echo "Usage: $0 <image>"
+  exit 1
+fi
+
+if [ ! -f "$IMAGE/Dockerfile" ]; then
+  echo "ERROR: Image $IMAGE does not exist"
+  exit 1
+fi
+
+cd "$IMAGE"
+
+IMAGE="${IMAGE%/}"
+IMAGE="${IMAGE//\//-}"
+
+docker push "docker.io/manageiq/workflows-examples-$IMAGE:latest"

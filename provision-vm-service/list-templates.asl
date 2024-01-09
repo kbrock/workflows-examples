@@ -4,7 +4,7 @@
   "States": {
     "ListTemplates": {
       "Type": "Task",
-      "Resource": "docker://docker.io/agrare/list-templates:latest",
+      "Resource": "docker://docker.io/manageiq/workflows-examples-provision-vm-service-list-templates:latest",
       "End": true,
       "Credentials": {
         "api_user.$": "$.api_user",
