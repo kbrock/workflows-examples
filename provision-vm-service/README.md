@@ -51,7 +51,7 @@ For example, using the `list-providers` image:
 
    ```sh
    cd list-providers
-   docker build . -t list-providers:latest
+   docker build . -t docker.io/manageiq/workflows-examples-provision-vm-service-list-providers:latest
    ```
 
 3. Run the container.
@@ -65,5 +65,5 @@ For example, using the `list-providers` image:
      -e API_URL=http://localhost:3000 \
      -e VERIFY_SSL=false \
      -e PROVIDER_TYPE=ManageIQ::Providers::Vmware::InfraManager \
-     list-providers:latest
+     docker.io/manageiq/workflows-examples-provision-vm-service-list-providers
    ```
