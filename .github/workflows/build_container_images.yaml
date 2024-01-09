@@ -20,9 +20,9 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build image
       run: bin/build_image ${{ matrix.image }}
-    - if: github.repository_owner == 'ManageIQ'
+    - if: github.repository_owner == 'ManageIQ' && github.ref_name == 'master'
       name: Docker login
       run: echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login docker.io --password-stdin --username ${{ secrets.DOCKER_REGISTRY_USERNAME }}
-    - if: github.repository_owner == 'ManageIQ'
+    - if: github.repository_owner == 'ManageIQ' && github.ref_name == 'master'
       name: Push container
       run: bin/push_image ${{ matrix.image }}
