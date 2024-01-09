@@ -1,0 +1,28 @@
+name: Build Container Images
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: 0 0 * * 0
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image:
+        - provision-vm-service/check-task-complete
+        - provision-vm-service/clone-template
+        - provision-vm-service/list-providers
+        - provision-vm-service/list-templates
+        - provision-vm-service/power-on-vm
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build image
+      run: bin/build_image ${{ matrix.image }}
+    - if: github.repository_owner == 'ManageIQ'
+      name: Docker login
+      run: echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login docker.io --password-stdin --username ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+    - if: github.repository_owner == 'ManageIQ'
+      name: Push container
+      run: bin/push_image ${{ matrix.image }}
