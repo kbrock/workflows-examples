@@ -4,7 +4,7 @@
   "States": {
     "ListProviders": {
       "Type": "Task",
-      "Resource": "docker://docker.io/agrare/list-providers:latest",
+      "Resource": "docker://docker.io/manageiq/workflows-examples-provision-vm-service-list-providers:latest",
       "End": true,
       "Credentials": {
         "api_user.$": "$.api_user",
