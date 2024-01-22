@@ -4,6 +4,7 @@ require 'bundler/setup'
 require "pathname"
 require "json"
 require "rbvmomi"
+require "manageiq-api-client"
 
 # Image-specific parameters
 ems_id       = ENV.fetch("PROVIDER_ID")
