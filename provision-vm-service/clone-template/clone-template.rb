@@ -14,19 +14,22 @@ host_ref     = ENV.fetch("HOST", nil)
 pool_ref     = ENV.fetch("RESPOOL", nil)
 vm_name      = ENV.fetch("NAME")
 
-# ManageIQ API login
 secrets = JSON.load(File.read(ENV.fetch("_CREDENTIALS")))
-secrets.transform_keys! { |k| k.sub(/^api_/, "").to_sym }
+
+# ManageIQ API login
+api_secrets = secrets.select { |k, _| k.start_with?("api_") }
+api_secrets.transform_keys! { |k| k.sub(/^api_/, "").to_sym }
 
 url        = ENV.fetch("API_URL", "http://localhost:3000")
 verify_ssl = ENV.fetch("VERIFY_SSL", "true") == "true"
 
-api_options = {url: url, ssl: {verify: verify_ssl}}.merge(secrets)
+api_options = {url: url, ssl: {verify: verify_ssl}}.merge(api_secrets)
 api = ManageIQ::API::Client.new(api_options)
 
 # Clone the template
 vcenter_host = api.providers.pluck(:id, :hostname).detect { |id, _| id == ems_id }.last
 
+# vCenter login
 vim = RbVmomi::VIM.connect(
   host: vcenter_host,
   user: secrets["vcenter_user"],
