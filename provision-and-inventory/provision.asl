@@ -75,14 +75,7 @@
       "Next": "InstallPackages"
     },
     "InstallPackages":{
-      "Type": "Task",
-      "Resource": "manageiq://embedded_ansible",
-      "Parameters": {
-        "RepositoryUrl": "https://github.com/kbrock/ansible-examples",
-        "RepositoryBranch": "dialog-ansible",
-        "PlaybookName.$": "$.ansible_packages",
-        "Hosts.$": "$.ipaddress"
-      },
+      "Type": "Pass",
       "Next": "SendEmail"
     },
     "SendEmail": {
